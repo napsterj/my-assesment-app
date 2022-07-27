@@ -1,3 +1,4 @@
+import { UserRoutingModule } from './user-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -9,7 +10,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     SignUpComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    UserRoutingModule    
   ],
   exports : [
     SignUpComponent

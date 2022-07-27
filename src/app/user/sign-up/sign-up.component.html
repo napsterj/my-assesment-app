@@ -1,1 +1,39 @@
-<p>sign-up works!</p>
+<div class="border border-2 border-info rounded container m-5 p-5 mx-auto position-relative bg-light" style="width:520px">
+    <form>
+        <div class="row">
+            <div class="mb-4">
+                <h2 class="text-secondary">Register New Users</h2>
+            </div>            
+        </div>
+        <div class="row">
+            <div class="mb-3">
+                <label for="InputFirstName" class="form-label text-primary"><p class="fw-semibold">First Name</p></label>
+                <input type="text" class="form-control" id="InputFirstName" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3">
+                <label for="InputLastName" class="form-label text-primary"><p class="fw-semibold">Last Name</p></label>
+                <input type="text" class="form-control" id="InputLastName" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 form-check">
+                <label for="InputEmail" class="form-label text-primary"><p class="fw-semibold">Email</p></label>
+                <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" />
+                <div id="emailHelp" class="form-text text-warning">
+                    We'll never share your email with anyone else.
+                </div>
+            </div>            
+        </div>
+        <div class="row">
+            <div class="mb-3">
+                <label for="InputPassword" class="form-label text-primary"><p class="fw-semibold">Password</p></label>
+                <input type="password" class="form-control" id="InputPassword" />
+            </div>
+        </div>
+        <div class="row m-4 mx-auto">            
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand sticky-top navbar-dark bg-info">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="assets/logo.png" class="img-responsive rounded" alt="" width="90" height="80">
+      </a>
+      <h4>Welcome to My Assessment</h4>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" 
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">        
+        <div class="navbar-nav flex">
+          <a class="nav-link active 
+                    position-absolute 
+                    start-50 end-50 mr-2" aria-current="page" 
+                    [routerLink]="'/home'" [routerLinkActive]="'active'" 
+                    [routerLinkActiveOptions]="{exact:true}">Home</a>
+
+          <a class="nav-link 
+                    position-absolute mr-3 
+                    top-50 end-0" 
+                    [routerLink]="'home/signup'" [routerLinkActive]="'active'">Sign Up</a>          
+        </div>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>

@@ -1,39 +1,73 @@
 <div class="border border-2 border-info rounded container m-5 p-5 mx-auto position-relative bg-light" style="width:520px">
-    <form>
+    <form [formGroup]="userDetails" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="mb-4">
-                <h2 class="text-secondary">Register New Users</h2>
+                <h2 class="text-secondary">Register New User</h2>
             </div>            
         </div>
         <div class="row">
             <div class="mb-3">
                 <label for="InputFirstName" class="form-label text-primary"><p class="fw-semibold">First Name</p></label>
-                <input type="text" class="form-control" id="InputFirstName" />
+                <input type="text" [ngClass]="(!firstName.valid && firstName.touched) ? 'invalidControl' : ''" class="form-control" formControlName="firstName" id="InputFirstName" />
+                <small *ngIf="!firstName.valid && firstName.touched" class="text text-danger">
+                    <p>First name is required.</p>
+                </small>
             </div>
         </div>
         <div class="row">
             <div class="mb-3">
                 <label for="InputLastName" class="form-label text-primary"><p class="fw-semibold">Last Name</p></label>
-                <input type="text" class="form-control" id="InputLastName" />
+                <input type="text" [ngClass]="!lastName.valid && lastName.touched ? 'invalidControl' : ''" class="form-control" formControlName="lastName" id="InputLastName" />
+                <small *ngIf="!lastName.valid && lastName.touched" class="text text-danger">
+                    <p>Last name is required.</p>
+                </small>
             </div>
         </div>
         <div class="row">
             <div class="mb-3 form-check">
                 <label for="InputEmail" class="form-label text-primary"><p class="fw-semibold">Email</p></label>
-                <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" />
+                <input type="email" [ngClass]="!email.valid && email.touched ? 'invalidControl' : ''" class="form-control" formControlName="email" id="InputEmail"  aria-describedby="emailHelp" />
                 <div id="emailHelp" class="form-text text-warning">
                     We'll never share your email with anyone else.
                 </div>
+                
+                    <small *ngIf="!email.valid && email.touched && email.errors?.['required']" class="text text-danger">
+                        <p>Email is required.</p>
+                    </small>
+                    <small *ngIf="email.dirty && email.errors?.['invalidEmail']" class="text text-danger">
+                        <p>Invalid email format.</p>
+                    </small>
+                
             </div>            
         </div>
         <div class="row">
             <div class="mb-3">
                 <label for="InputPassword" class="form-label text-primary"><p class="fw-semibold">Password</p></label>
-                <input type="password" class="form-control" id="InputPassword" />
+                <input type="password" [ngClass]="(!password.valid && password.touched) ? 'border border-danger': ''" 
+                       class="form-control" formControlName="password" id="InputPassword" />
+                <div *ngIf="!password.valid && password.touched && 
+                            password.errors?.['required']">
+
+                    <small class="text text-danger">Password is required.</small>                     
+                </div>
+                <div *ngIf="!password.valid && password.touched">
+                    <small *ngIf="password.errors?.['minlength']" class="text text-danger">
+                         <p>Password must be minimum 8 characters.</p>
+                    </small>
+                    <small *ngIf="userDetails.errors?.['nameCheckFailed'] && 
+                                 (firstName.actualValue !=='' && lastName.actualValue !=='')" class="text text-danger">
+
+                        <p>Password cannot be same as first name or last name.</p>
+                    </small>  
+                    <small *ngIf="password.errors?.['pattern']?.actualValue" class="text text-danger">
+                        <p>Password must contain at least one upercase and one lowercase character.</p>
+                    </small>
+                </div>  
+                
             </div>
         </div>
         <div class="row m-4 mx-auto">            
-            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <button type="submit" class="btn btn-success">Sign Up</button>
         </div>
     </form>
 </div>
